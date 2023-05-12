@@ -41,6 +41,9 @@ public class Main {
          * Refund request implementation
          */
         FinanceManager finManager = new FinanceManager();
+        TrainingCourse trainingCourse = new TrainingCourse("Health", 1, 100.0, 2314, "12/5/2023");
+        Trainee trainee = new Trainee(1, "Billy", "bill1", null, null, null, null, null, null);
+        trainingCourse.enrolTrainee(trainee);
 
         System.out.print("Enter trainee ID: ");
         int traineeID = scanner.nextInt();
@@ -53,12 +56,10 @@ public class Main {
         System.out.print("Please enter a course ID: ");
         int courseToRefund = scanner.nextInt();
 
-        finManager.refundTrainee(traineeID, courseToRefund);
-        
-
-
-
-
+        boolean refundSuccess = false;
+        if (courseToRefund == trainingCourse.courseID) {
+            refundSuccess = finManager.refundTrainee(traineeID, trainingCourse);
+        }
 
     }
 }
