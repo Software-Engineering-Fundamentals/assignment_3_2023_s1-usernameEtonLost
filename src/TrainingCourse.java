@@ -2,7 +2,7 @@ package src;
 import java.util.ArrayList;
 
 public class TrainingCourse extends Course {
-  public int cencusDate;
+  public String censusDate;
   private ArrayList<Trainee> traineeList = new ArrayList<Trainee>();
 
   public TrainingCourse() {}
@@ -12,14 +12,32 @@ public class TrainingCourse extends Course {
     this.courseID = courseID;
     this.fee = fee;
     this.trainerID = trainerID;
-    this.cencusDate = cencusDate;
+    this.censusDate = censusDate;
   }
 
+  public void unenrollTrainee(int traineeID) {
+    int index = 0;
+    for (Trainee trainee : traineeList) {
+      if (trainee.traineeID == traineeID) {
+        break;
+      }
+      index++;
+    }
+
+    if (index < traineeList.size()) {
+      traineeList.remove(index);
+    }
+  }
+
+  // a get function to return all trainees currently enrolled in the course
   public ArrayList<Trainee> getCourseTraineeList() {
     return traineeList;
   }
 
+  /*
+   * Adds a trainee to the course
+   */
   public void enrolTrainee(Trainee trainee) {
-    this.traineeList.add(traineeList.size()-1, trainee);
+    this.traineeList.add(traineeList.size(), trainee);
   }
 }
