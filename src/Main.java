@@ -37,5 +37,28 @@ public class Main {
         System.out.println("Printing inquiries");
         user.viewTickets();
 
+        /**
+         * Refund request implementation
+         */
+        FinanceManager finManager = new FinanceManager();
+
+        System.out.print("Enter trainee ID: ");
+        int traineeID = scanner.nextInt();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+        user.login(traineeID, password);
+        System.out.println();
+
+        System.out.println("What course would you like a refund for?");
+        System.out.print("Please enter a course ID: ");
+        int courseToRefund = scanner.nextInt();
+
+        finManager.refundTrainee(traineeID, courseToRefund);
+        
+
+
+
+
+
     }
 }

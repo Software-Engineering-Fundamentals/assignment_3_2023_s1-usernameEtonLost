@@ -17,4 +17,8 @@ public class GeneralUser {
             System.out.println("ID: " + ticket.getTicketID() + "\nquery: " + ticket.getQuery() + "\nresponse: " + ticket.getResponse());
         }
     }
+
+    public void login(int traineeID, String passwordString) {
+        System.out.println("Logged in as " + Integer.toString(traineeID));
+    }
 }
