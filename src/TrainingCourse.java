@@ -40,4 +40,17 @@ public class TrainingCourse extends Course {
   public void enrolTrainee(Trainee trainee) {
     this.traineeList.add(traineeList.size(), trainee);
   }
+
+  public void viewInfo() {
+    System.out.println("Course Name: " + name);
+    System.out.println("Course ID: " + Integer.toString(courseID));
+    System.out.println("Enrolled trainee IDs: ");
+    if (traineeList.size() == 0) {
+      System.out.println("None enrolled.");
+    } else {
+      for (Trainee trainee : traineeList) {
+        System.out.println(" - " + trainee.traineeID);
+      }
+    }
+  }
 }

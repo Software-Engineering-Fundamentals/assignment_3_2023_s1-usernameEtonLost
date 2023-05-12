@@ -24,6 +24,9 @@ public class Trainee extends GeneralUser {
 
   // public Trainee() {}
 
+  /*
+   * TODO: THIS MUST BE FIT IN SOMEWHERE
+   */
   public boolean requestRefund(int courseID) {
     
     

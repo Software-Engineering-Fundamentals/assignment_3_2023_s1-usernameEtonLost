@@ -33,7 +33,7 @@ public class FinanceManager {
       course.unenrollTrainee(traineeID);
     } else {
       // Do not refund if not found in course
-      System.out.println("Could not refund. User is not in course");
+      System.out.println("Could not refund. You are not enrolled in this course.");
     }
 
     return found;
