@@ -1,6 +1,5 @@
 package src;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.DoubleAccumulator;
 
 public class FinanceManager {
   // Constructor
@@ -14,7 +13,10 @@ public class FinanceManager {
    * @return true if the refund was successful, false otherwise.
    */
   // NOTE: added courseID as a parameter for this (different to class diagram) 
-  public boolean refundTrainee(int traineeID, TrainingCourse course) {
+  public boolean refundTrainee(int traineeID, RefundRequest refundRequest) {
+    // get the course from the ID
+    TrainingCourse course = OnlineSystem.getCourseFromID(refundRequest.courseID);
+    
     // Get the trainees enrolled in the course
     ArrayList<Trainee> traineeList = course.getCourseTraineeList();
     boolean found = false;

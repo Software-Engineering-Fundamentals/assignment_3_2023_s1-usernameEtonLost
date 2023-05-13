@@ -8,4 +8,8 @@ public class RefundRequest {
     this.courseID = courseID;
     this.date = date;
   }
+
+  // public void refundTrainee() {
+  //   OnlineSystem.financeManager.refundTrainee(courseID, null);
+  // }
 }

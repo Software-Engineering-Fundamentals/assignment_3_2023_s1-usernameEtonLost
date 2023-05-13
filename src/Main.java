@@ -1,8 +1,7 @@
 package src;
 
 import java.util.Scanner;
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime;    
+import java.util.ArrayList;   
 
 public class Main {
     public static Manager manager = new Manager();
@@ -79,6 +78,8 @@ public class Main {
 
         System.out.println("Printing inquiries");
         user.viewTickets();
+
+        scanner.close();
     }
     
     public static void refundImplementation() {
@@ -88,21 +89,25 @@ public class Main {
          * We initialise all the objects required to simulate a refund
          * - this includes a training course with arbitrary ID "1118"
          */
-        GeneralUser user = new GeneralUser();
+        GeneralUser generalUser = new GeneralUser();
         FinanceManager finManager = new FinanceManager();
+        OnlineSystem.financeManager = finManager;
         TrainingCourse trainingCourse = new TrainingCourse("Health", 1118, 100.0, 2314, "12/5/2023");
-        Trainee trainee = new Trainee(100, "Billy", "bill1", null, null, null, null, null, null);
+        Trainee trainee = new Trainee(-1, null, null, null, null, null, null, null, null, new ArrayList<RefundRequest>());
+        OnlineSystem.currentUser = trainee;
 
         // Enrol the trainee to the created course for demonstration purposes
         trainingCourse.enrolTrainee(trainee);
 
         // A simple skeleton block to simulate the login feature
         // You must be logged in as the correct ID to be able to refund
+        System.out.println("To continue, please log in:");
+        System.out.println("-----------------------");
         System.out.print("Enter trainee ID: ");
         int traineeID = scanner.nextInt();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
-        user.login(traineeID, password);
+        generalUser.login(traineeID, password);
         
         // See the information for demonstration convenience
         System.out.println("\nCurrent courses available:");
@@ -113,30 +118,42 @@ public class Main {
         // Now we want to simulate a refund request.
         // If you want a valid refund, you need to enter course ID "1118"
         // because that is the only one this trainee is enrolled to
+        // System.out.println("What course would you like a refund for?");
+        // System.out.print("Please enter a course ID: ");
+        // int courseToRefund = scanner.nextInt();
+
+        // // Get the time and date that the refund request was made
+        // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        // LocalDateTime now = LocalDateTime.now();  
+        // RefundRequest refundRequest = new RefundRequest(courseToRefund, dtf.format(now));
+        // // should be trainee.requestRefund() instead
+
         System.out.println("What course would you like a refund for?");
         System.out.print("Please enter a course ID: ");
         int courseToRefund = scanner.nextInt();
 
-        // Get the time and date that the refund request was made
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();  
-        RefundRequest refundRequest = new RefundRequest(courseToRefund, dtf.format(now));
-        // should be trainee.requestRefund() instead
-
-        boolean refundSuccess = false;
-        TrainingCourse selectedCourse;
-        if (refundRequest.courseID != trainingCourse.courseID) {
+        
+        // TrainingCourse selectedCourse;
+        if (courseToRefund != trainingCourse.courseID) {
             // For demo purposes, create a new course if the inputted ID is different
             // to simulate other courses being available
-            selectedCourse = new TrainingCourse("Some Other Course", courseToRefund, -1, -1, null);
-        } else {
-            // If ID matches, the selected course is the one made before.
-            selectedCourse = trainingCourse;
+            OnlineSystem.courses.add(OnlineSystem.courses.size(), new TrainingCourse("Some Other Course", courseToRefund, -1, -1, null));
+        }  else {
+            OnlineSystem.courses.add(OnlineSystem.courses.size(), trainingCourse);
         }
+        // else {
+        //     // If ID matches, the selected course is the one made before.
+        //     selectedCourse = trainingCourse;
+        // }
+        
+        boolean refundSuccess = OnlineSystem.currentUser.requestRefund(courseToRefund);
 
-        // TODO: MAKE IT TAKE IN A REFUND REQUEST INSTEAD
-        // The finance manager calls refundTrainee() which will refund if allowed
-        refundSuccess = finManager.refundTrainee(traineeID, selectedCourse);
+        System.out.println();
+        if (refundSuccess) {
+            System.out.println("Refund successful!");
+        } else {
+            System.out.println("Refund unsuccessful.");
+        }
 
         // See the information for demonstration convenience
         System.out.println();

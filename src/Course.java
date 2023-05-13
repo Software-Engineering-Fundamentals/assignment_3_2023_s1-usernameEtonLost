@@ -7,4 +7,6 @@ public class Course {
   public int trainerID;
 
   public Course() {}
+
+  
 }

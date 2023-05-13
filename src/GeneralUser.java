@@ -19,6 +19,7 @@ public class GeneralUser {
     }
 
     public void login(int traineeID, String passwordString) {
+        OnlineSystem.currentUser.traineeID = traineeID;
         System.out.println("Logged in as " + Integer.toString(traineeID));
     }
 }
