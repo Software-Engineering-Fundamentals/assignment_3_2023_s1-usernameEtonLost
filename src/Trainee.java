@@ -16,7 +16,7 @@ public class Trainee extends GeneralUser {
   private String contactNum;
   private String emgContact;
   private String emailID;
-
+  // Trainee has a 0 to many relationship with RefundRequest
   public ArrayList<RefundRequest> refundRequests;
 
   public Trainee(final int ID, String name, String username, String DOB, String address, String password, String contactNum, String emgContact, String emailID, ArrayList<RefundRequest> refundRequests) {

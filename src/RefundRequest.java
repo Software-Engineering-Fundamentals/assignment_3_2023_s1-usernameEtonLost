@@ -1,7 +1,9 @@
 package src;
 
 /*
- * Following the RefundRequest class
+ * Following the RefundRequest class with minor modifications
+ * - added traineeID and courseID as fields or else there would be no way
+ *   for the finance manager to easily get this information
  */
 public class RefundRequest {
   public int traineeID;

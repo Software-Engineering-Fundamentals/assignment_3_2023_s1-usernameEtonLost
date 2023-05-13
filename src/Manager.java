@@ -3,6 +3,7 @@ package src;
 import java.util.ArrayList;
 
 public class Manager {
+    // Manager has a 0 to many cardinality with InquiryTicket
     private ArrayList<InquiryTicket> inquiryTickets = new ArrayList<>();
 
     public Manager() {}

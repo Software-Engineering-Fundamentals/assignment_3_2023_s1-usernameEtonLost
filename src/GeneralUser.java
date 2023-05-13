@@ -3,8 +3,10 @@ package src;
 import java.util.ArrayList;
 
 public class GeneralUser {
+    // GeneralUser has a one to many relationship with InquiryTicket as seen in class diagram
     private ArrayList<InquiryTicket> inquiryTickets = new ArrayList<>();
 
+    // Constructor is assumed
     public GeneralUser() {}
 
     // Public method to lodge an inquiry to manager. Method creates a ticket object
