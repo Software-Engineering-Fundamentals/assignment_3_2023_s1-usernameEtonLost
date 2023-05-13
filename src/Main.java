@@ -37,23 +37,29 @@ public class Main {
 
         // System.out.println("Printing inquiries");
         // user.viewTickets();
+        Scanner scanner = new Scanner(System.in);
 
-        // ticketImplementation();
+        ticketImplementation(scanner);
 
         /**
          * Refund request implementation
          */
-        refundImplementation();
+        refundImplementation(scanner);
+
+        scanner.close();
 
     }
 
-    public static void ticketImplementation() {
+    public static void ticketImplementation(Scanner scanner) {
+        System.out.println("TICKET IMPLEMENTATION");
+        System.out.println("---------------------");
+
         GeneralUser user = new GeneralUser();
 
         System.out.println("Lodging request");
         System.out.println("Enter a query: ");
 
-        Scanner scanner = new Scanner(System.in);
+        // Scanner scanner = new Scanner(System.in);
         String query = scanner.nextLine();
 
         user.lodgeInquiry(query);
@@ -78,13 +84,17 @@ public class Main {
 
         System.out.println("Printing inquiries");
         user.viewTickets();
+        System.out.println();
 
-        scanner.close();
+        // scanner.close();
     }
     
-    public static void refundImplementation() {
-        Scanner scanner = new Scanner(System.in);
+    public static void refundImplementation(Scanner scanner) {
+        // Scanner scanner = new Scanner(System.in);
         
+        System.out.println("REFUND IMPLEMENTATION");
+        System.out.println("---------------------");
+
         /**
          * We initialise all the objects required to simulate a refund
          * - this includes a training course with arbitrary ID "1118"
@@ -102,7 +112,6 @@ public class Main {
         // A simple skeleton block to simulate the login feature
         // You must be logged in as the correct ID to be able to refund
         System.out.println("To continue, please log in:");
-        System.out.println("-----------------------");
         System.out.print("Enter trainee ID: ");
         int traineeID = scanner.nextInt();
         System.out.print("Enter password: ");
@@ -160,6 +169,6 @@ public class Main {
         trainingCourse.viewInfo();
         System.out.println();
 
-        scanner.close();
+        // scanner.close();
     }
 }
