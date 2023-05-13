@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class TrainingCourse extends Course {
   public String censusDate;
-  private ArrayList<Trainee> traineeList = new ArrayList<Trainee>();
+  private ArrayList<Trainee> traineeList = new ArrayList<>();
 
   public TrainingCourse() {}
 
