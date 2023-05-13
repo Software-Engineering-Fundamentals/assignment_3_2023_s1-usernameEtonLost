@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        ticketImplementation(scanner);
+        // ticketImplementation(scanner);
         refundImplementation(scanner);
 
         scanner.close();
@@ -79,6 +79,7 @@ public class Main {
         int traineeID = scanner.nextInt();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
+        
         // The controller calls login from general user like in the diagram
         generalUser.login(traineeID, password);
         

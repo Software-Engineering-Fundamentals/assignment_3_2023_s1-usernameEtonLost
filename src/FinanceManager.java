@@ -45,6 +45,6 @@ public class FinanceManager {
 
   // Skeleton code representing how refund money would be used
   private void refundMoney(int traineeID, Course course) {
-    System.out.println("Refunding amount of $" + Double.toString(course.fee) + "to trainee " + Integer.toString(traineeID) + ".");
+    System.out.println("Refunding amount of $" + Double.toString(course.fee) + " to traineeID " + Integer.toString(traineeID) + ".");
   }
 }
