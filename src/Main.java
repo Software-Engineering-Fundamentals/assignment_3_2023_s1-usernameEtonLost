@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.ArrayList;   
 
 public class Main {
-    public static Manager manager = new Manager();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -19,33 +18,44 @@ public class Main {
         System.out.println("TICKET IMPLEMENTATION");
         System.out.println("---------------------");
 
+        // Initialise pseudo objects to simulate lodging and answering a request
+        OnlineSystem.manager = new Manager();
         GeneralUser user = new GeneralUser();
 
+        // Simulating entering a query
         System.out.println("Lodging request");
         System.out.println("Enter a query: ");
 
         String query = scanner.nextLine();
 
+        // Call lodgeInquiry to create ticket
         user.lodgeInquiry(query);
 
+        // On manager side, simulating viewing current tickets
         System.out.println("Printing inquiries");
-        manager.viewTickets();
+        OnlineSystem.manager.viewTickets();
 
+        // Simulating answering a request
         System.out.println("Answer request");
         System.out.println("Enter a request ID: ");
 
+        // Get the ticket ID
         int ticketID = scanner.nextInt();
         scanner.nextLine();
 
         System.out.println("Enter a response: ");
 
+        // Get a response
         String response = scanner.nextLine();
-        boolean answered = manager.answerTicket(ticketID, response);
+        // Attempt to answer the response.
+        boolean answered = OnlineSystem.manager.answerTicket(ticketID, response);
 
+        // Simulate not being able to answer the request
         if (!answered) {
             System.out.println("Unable to answer ticket: Ticket not found");
         }
 
+        // Print out the user inquiries, to show that it has/has not been answered
         System.out.println("Printing inquiries");
         user.viewTickets();
         System.out.println();

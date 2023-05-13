@@ -9,6 +9,7 @@ public class OnlineSystem {
   public static FinanceManager financeManager;
   public static ArrayList<TrainingCourse> courses = new ArrayList<TrainingCourse>();
   public static Trainee currentTrainee;
+  public static Manager manager;
 
   public static TrainingCourse getCourseFromID(int courseID) {
     for (TrainingCourse course : courses) {
