@@ -41,6 +41,9 @@ public class TrainingCourse extends Course {
     this.traineeList.add(traineeList.size(), trainee);
   }
 
+    /*
+     * Show a summary of course information for demonstration purposes
+     */
   public void viewInfo() {
     System.out.println("Course Name: " + name);
     System.out.println("Course ID: " + Integer.toString(courseID));

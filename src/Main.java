@@ -24,7 +24,6 @@ public class Main {
         System.out.println("Lodging request");
         System.out.println("Enter a query: ");
 
-        // Scanner scanner = new Scanner(System.in);
         String query = scanner.nextLine();
 
         user.lodgeInquiry(query);
@@ -58,17 +57,21 @@ public class Main {
 
         /**
          * We initialise all the objects required to simulate a refund
-         * - this includes a training course with arbitrary ID "1118"
+         * - this includes an example training course with arbitrary ID "1118"
+         * - we save a some into a pseuodo online system for demo purposes
          */
         GeneralUser generalUser = new GeneralUser();
         FinanceManager finManager = new FinanceManager();
         OnlineSystem.financeManager = finManager;
         TrainingCourse trainingCourse = new TrainingCourse("Health", 1118, 100.0, 2314, "12/5/2023");
         Trainee trainee = new Trainee(-1, null, null, null, null, null, null, null, null, new ArrayList<RefundRequest>());
-        OnlineSystem.currentUser = trainee;
+        OnlineSystem.currentTrainee = trainee;
 
         // Enrol the trainee to the created course for demonstration purposes
+        // Pretend that they enrolled in the wrong course and now want a refund
         trainingCourse.enrolTrainee(trainee);
+        // Add to online system for demo
+        OnlineSystem.courses.add(OnlineSystem.courses.size(), trainingCourse);
 
         // A simple skeleton block to simulate the login feature
         System.out.println("To continue, please log in:");
@@ -76,6 +79,7 @@ public class Main {
         int traineeID = scanner.nextInt();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
+        // The controller calls login from general user like in the diagram
         generalUser.login(traineeID, password);
         
         // See the course information for demonstration convenience
@@ -84,11 +88,6 @@ public class Main {
         trainingCourse.viewInfo();
         System.out.println();
 
-        // 
-        // DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-        // LocalDateTime now = LocalDateTime.now();  
-        // RefundRequest refundRequest = new RefundRequest(courseToRefund, dtf.format(now));
-        // // should be trainee.requestRefund() instead
 
         // Now we want to simulate a refund request.
         // If you want a valid refund, you need to enter course ID "1118"
@@ -97,18 +96,19 @@ public class Main {
         System.out.print("Please enter a course ID: ");
         int courseToRefund = scanner.nextInt();
 
-        
-        // TrainingCourse selectedCourse;
+        // Update the selected course for demo purposes
         if (courseToRefund != trainingCourse.courseID) {
-            // For demo purposes, create a new course if the inputted ID is different
-            // to simulate other courses being available
+            /* For demo purposes, create a new course if the inputted ID is different
+            * to simulate other courses being available and the trainee choosing one
+            * that they are not enrolled in
+            */
             OnlineSystem.courses.add(OnlineSystem.courses.size(), new TrainingCourse("Some Other Course", courseToRefund, -1, -1, null));
-        }  else {
-            OnlineSystem.courses.add(OnlineSystem.courses.size(), trainingCourse);
         }
         
-        boolean refundSuccess = OnlineSystem.currentUser.requestRefund(courseToRefund);
+        // The controller calls request refund from trainee like the diagram
+        boolean refundSuccess = OnlineSystem.currentTrainee.requestRefund(courseToRefund);
 
+        // Just print out the status to show that refund status is returned to controller
         System.out.println();
         if (refundSuccess) {
             System.out.println("Refund successful!");
@@ -120,7 +120,5 @@ public class Main {
         System.out.println();
         trainingCourse.viewInfo();
         System.out.println();
-
-        // scanner.close();
     }
 }

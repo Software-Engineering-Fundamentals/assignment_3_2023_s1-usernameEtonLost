@@ -37,12 +37,14 @@ public class Trainee extends GeneralUser {
     // Get the time and date that the refund request was made
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
     LocalDateTime now = LocalDateTime.now();
-    // Create a new refund request
-    RefundRequest refundRequest = new RefundRequest(courseID, dtf.format(now));
+    // Create a new refund request like in the diagram
+    RefundRequest refundRequest = new RefundRequest(this.traineeID, courseID, dtf.format(now));
     // send this refund request to the finance manager who returns whether or not the refund was successful
-    boolean result = OnlineSystem.financeManager.refundTrainee(this.traineeID, refundRequest);
+    // this calls financeManager like in the diagram
+    boolean refundStatus = OnlineSystem.financeManager.refundTrainee(this.traineeID, refundRequest);
 
-    return result;
+    // return the refund status like in the diagram
+    return refundStatus;
   }
   
 }

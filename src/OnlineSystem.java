@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class OnlineSystem {
   public static FinanceManager financeManager;
   public static ArrayList<TrainingCourse> courses = new ArrayList<TrainingCourse>();
-  public static Trainee currentUser;
+  public static Trainee currentTrainee;
 
   public static TrainingCourse getCourseFromID(int courseID) {
     for (TrainingCourse course : courses) {
