@@ -1,6 +1,10 @@
 package src;
 import java.util.ArrayList;
 
+/*
+ * This class is needed to simulate the online servers.
+ * Otherwise, the objects cannot communicate with each other easily.
+ */
 public class OnlineSystem {
   public static FinanceManager financeManager;
   public static ArrayList<TrainingCourse> courses = new ArrayList<TrainingCourse>();

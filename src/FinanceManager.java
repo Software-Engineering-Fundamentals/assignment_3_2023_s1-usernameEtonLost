@@ -12,7 +12,7 @@ public class FinanceManager {
    * @param course the course the trainee wants a refund for
    * @return true if the refund was successful, false otherwise.
    */
-  // NOTE: added courseID as a parameter for this (different to class diagram) 
+
   public boolean refundTrainee(int traineeID, RefundRequest refundRequest) {
     // get the course from the ID
     TrainingCourse course = OnlineSystem.getCourseFromID(refundRequest.courseID);
@@ -41,6 +41,7 @@ public class FinanceManager {
     return found;
   }
 
+  // Skeleton code representing how refund money would be used
   private void refundMoney(Course course) {
     System.out.println("Refunding amount of $" + Double.toString(course.fee));
   }

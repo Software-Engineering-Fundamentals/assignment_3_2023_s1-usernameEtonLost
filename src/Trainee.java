@@ -32,24 +32,15 @@ public class Trainee extends GeneralUser {
     this.refundRequests = refundRequests;
   }
 
-  // public Trainee() {}
 
-  /*
-   * TODO: THIS MUST BE FIT IN SOMEWHERE
-   */
   public boolean requestRefund(int courseID) {
-    // Now we want to simulate a refund request.
-    // If you want a valid refund, you need to enter course ID "1118"
-    // because that is the only one this trainee is enrolled to
-    
-    
+    // Get the time and date that the refund request was made
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-    LocalDateTime now = LocalDateTime.now();  
+    LocalDateTime now = LocalDateTime.now();
+    // Create a new refund request
     RefundRequest refundRequest = new RefundRequest(courseID, dtf.format(now));
-
+    // send this refund request to the finance manager who returns whether or not the refund was successful
     boolean result = OnlineSystem.financeManager.refundTrainee(this.traineeID, refundRequest);
-
-    // refundRequest.refundTrainee();
 
     return result;
   }

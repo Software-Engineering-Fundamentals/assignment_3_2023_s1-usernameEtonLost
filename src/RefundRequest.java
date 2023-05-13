@@ -1,5 +1,8 @@
 package src;
 
+/*
+ * Following the RefundRequest class
+ */
 public class RefundRequest {
   public int courseID;
   public String date;
@@ -8,8 +11,4 @@ public class RefundRequest {
     this.courseID = courseID;
     this.date = date;
   }
-
-  // public void refundTrainee() {
-  //   OnlineSystem.financeManager.refundTrainee(courseID, null);
-  // }
 }
