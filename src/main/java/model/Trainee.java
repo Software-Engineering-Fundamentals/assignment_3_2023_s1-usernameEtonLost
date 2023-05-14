@@ -1,8 +1,7 @@
-package src;
+package src.main.java.model;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
 

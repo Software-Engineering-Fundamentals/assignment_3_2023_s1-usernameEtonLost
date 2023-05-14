@@ -1,4 +1,4 @@
-package src;
+package src.main.java.model;
 
 /*
  * Follows the Course class from the class diagram

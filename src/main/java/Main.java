@@ -1,6 +1,15 @@
-package src;
+package src.main.java;
 
 import java.util.Scanner;
+
+import src.main.java.model.FinanceManager;
+import src.main.java.model.GeneralUser;
+import src.main.java.model.Manager;
+import src.main.java.model.OnlineSystem;
+import src.main.java.model.RefundRequest;
+import src.main.java.model.Trainee;
+import src.main.java.model.TrainingCourse;
+
 import java.util.ArrayList;   
 
 public class Main {
@@ -8,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // ticketImplementation(scanner);
+        ticketImplementation(scanner);
         refundImplementation(scanner);
 
         scanner.close();
